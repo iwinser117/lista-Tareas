@@ -1,9 +1,9 @@
 {
   "name": "lista-tareas",
   "version": "1.0.0",
-  "main": "conexion.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon conexion.js",
+    "start": "nodemon conexion.js", seri
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

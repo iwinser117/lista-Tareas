@@ -18,8 +18,8 @@ app.use(express.static("./src/public"));
 app.get("/", (req, res) => {
   res.send("hola estamos conectados desde mongoose");
 });
-app.get('*'),(req, res)=>{
-  res.status(404).send('Error no encontrada')
+app.get('*'),(req, res){
+  res.status(404.d)
 }
 
 mongoose.set("strictQuery", false);

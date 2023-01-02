@@ -1,7 +1,7 @@
 {
   "name": "lista-tareas",
   "version": "1.0.0",
-  "main": "conexion.js",
+  "main": "con.js",
   "scripts": {
     "start": "nodemon conexion.js",
     "build": "webpack --mode production",

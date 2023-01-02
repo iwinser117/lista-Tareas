@@ -12,15 +12,13 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use('/api', rutaTarea);
-// app.use(express.static(path.join(__dirname, "./src/public")))
-app.use(express.static("./src/public"));
+app.use(express.static(path.join(__dirname, "./src/public")))
+// app.use(express.static("./src/public"));
 //mis rutas
 app.get("/", (req, res) => {
   res.send("hola estamos conectados desde mongoose");
 });
-app.get('*'),(req, res)=>{
-  res.status(404).send('Error no encontrada')
-}
+
 
 mongoose.set("strictQuery", false);
 mongoose
