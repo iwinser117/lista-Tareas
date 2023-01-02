@@ -4,6 +4,9 @@ const tareaSchema = require("../models/tareasModels");
 const app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("hola estamos conectados desde mongoose");
+});
 //obteniendo las tareas
 router.get("/tareas", (req, res) => {
   tareaSchema
@@ -31,7 +34,7 @@ router.delete("/tareas/:id", (req, res) => {
 //creando una nueva
 router.post("/tareas", (req, res) => {
   const tareas = tareaSchema(req.body);
-  console.log({ body: req.body });
+  console.log({body: req.body})
   tareas
     .save()
     .then((data) => res.json(data))
@@ -49,5 +52,6 @@ router.put("/tareas/:id", (req, res) => {
     .catch((error) => res.json({ message: error }));
   console.log({ id });
 });
+
 
 module.exports = router;
