@@ -23,5 +23,13 @@
     "mongoose": "^6.8.2",
     "webpack": "^5.75.0"
   },
-  "description": ""
+  "description": "applicacion de lista de tareas, nodeJs.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iwinser117/lista-Tareas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iwinser117/lista-Tareas/issues"
+  },
+  "homepage": "https://github.com/iwinser117/lista-Tareas#readme"
 }
