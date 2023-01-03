@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use('/api', rutaTarea);
-// app.use(express.static("/src/public"))
+app.use(express.static(path.join(__dirname, "public")))
 
 //mis rutas
 app.get("/", (req, res) => {
