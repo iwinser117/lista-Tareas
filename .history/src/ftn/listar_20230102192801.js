@@ -8,8 +8,8 @@ async function misDatos(data) {
   await data.map((item, index) => {
     // console.log(item._id)
     contenido.innerHTML += `
-            <tr>
-              <th id="miItemActual"  scope="row">${index + 1}</th>
+            <tr id="miItemActual">
+              <th  scope="row">${index + 1}</th>
               
               <td id="nDBtarea">${item.name}</td>
               <td>${item.descripcion}</td>

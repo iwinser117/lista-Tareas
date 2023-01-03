@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 //definiendo rutas d ela a
 app.use("/api", routes);
 // app.use(express.static(path.join(__dirname, "./src/public")))
-app.use(express.static("public"));
+ app.use(express.static("./src/public"));
 //mis rutas
 // app.get("/", (req, res) => {
 //   res.send("hola estamos conectados desde mongoose");

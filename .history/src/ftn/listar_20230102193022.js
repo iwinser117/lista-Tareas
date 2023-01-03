@@ -2,7 +2,7 @@ const contenido = document.getElementById("contenido");
 const nombreTarea = document.getElementById("nDBtarea");
 const miItemActual = document.getElementById("miItemActual");
 
-console.log(miItemActual)
+console.log(miItemActual.value  )
 async function misDatos(data) {
   contenido.innerHTML = "";
   await data.map((item, index) => {

@@ -1,15 +1,13 @@
 const contenido = document.getElementById("contenido");
 const nombreTarea = document.getElementById("nDBtarea");
-const miItemActual = document.getElementById("miItemActual");
-
-console.log(miItemActual)
+const miItemActual = document.getElementById("m")
 async function misDatos(data) {
   contenido.innerHTML = "";
   await data.map((item, index) => {
     // console.log(item._id)
     contenido.innerHTML += `
-            <tr>
-              <th id="miItemActual"  scope="row">${index + 1}</th>
+            <tr id="miItemActual">
+              <th  scope="row">${index + 1}</th>
               
               <td id="nDBtarea">${item.name}</td>
               <td>${item.descripcion}</td>
