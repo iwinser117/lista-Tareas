@@ -55,8 +55,9 @@ const actualizarDatos = () => {
       name,
       descripcion,
     }),
-  })
-    .then(console.log("creado con exito"))
+    
+  });
+  .then(console.log("creado con exito"))
     .then(getDatos);
 };
 
