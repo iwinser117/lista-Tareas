@@ -32,15 +32,37 @@ async function misDatos(data) {
         `;
   });
 }
-
-function editar(id,n,d) {
-  console.log(id,n,d);
-  inputName.value = n
-  inputDescripcion.value = d
-  //funciona hasta aqui el editar , ya que cambia el btn
-  buttonCrear.innerHTML = "Actualizar";
+let idVariable = ''
+function editar(id, n, d) {
+idVariable = id;
+  console.log(id, n, d);
+  inputName.value = n;
+  inputDescripcion.value = id;
+  
+  
+  // actualizarDatos();
 }
+console.log(idVariable)
+const actualizarDatos = () => {
+  const name = inputName.value;
+  const descripcion = inputDescripcion.value;
+  fetch(`http://localhost:3000/api/tareas/${idVariable}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      descripcion,
+    }),
+  });
+  // .then(console.log("creado con exito"))
+  // .then(getDatos);
+};
 
+// inputName.value = "";
+// inputDescripcion.value = "";
+//funciona hasta aqui el editar , ya que cambia el btn
 
 async function deleteTask(id) {
   const response = await fetch(`http://localhost:3000/api/tareas/${id}`, {
@@ -52,4 +74,3 @@ async function deleteTask(id) {
     console.log("error en el delete");
   }
 }
-
