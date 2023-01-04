@@ -37,7 +37,7 @@ function editar(id, n, d) {
 idVariable = id;
   console.log(id, n, d);
   inputName.value = n;
-  inputDescripcion.value = d;
+  inputDescripcion.value = id;
   
   
   // actualizarDatos();
@@ -61,7 +61,7 @@ const actualizarDatos = () => {
 
   inputName.value = "";
   inputDescripcion.value = "";
-  idVariable = "";
+  let idVariable = "";
 };
 
 //funciona hasta aqui el editar , ya que cambia el btn
