@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   getDatos();
 });
+
 const actualizarBtn = document.getElementById("button-actualizar");
 const buttonCrear = document.getElementById("button-form");
 const inputName = document.getElementById("nameTarea");

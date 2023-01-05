@@ -31,7 +31,6 @@ async function misDatos(data) {
 }
 
 function editar(id, n, d) {
-  actualizarBtn.style.display = 'inline'
   idVariable = id;
   inputName.value = n;
   inputDescripcion.value = d;
@@ -53,10 +52,19 @@ const actualizarDatos = () => {
     .then(console.log("Editado..."))
     .then(getDatos);
 
-  inputName.value = null;
-  inputDescripcion.value = null;
+  inputName.value = "";
+  inputDescripcion.value = "";
   idVariable = "";
-  actualizarBtn.style.display = "none";
 };
 
 
+async function deleteTask(id) {
+  const response = await fetch(`http://localhost:3000/api/tareas/${id}`, {
+    method: "DELETE",
+  }).then(getDatos);
+  if (response) {
+    console.log(`efectivo el delete de ${id}`);
+  } else {
+    console.log("error en el delete");
+  }
+}

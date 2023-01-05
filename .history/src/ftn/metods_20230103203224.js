@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   getDatos();
 });
+
 const actualizarBtn = document.getElementById("button-actualizar");
 const buttonCrear = document.getElementById("button-form");
 const inputName = document.getElementById("nameTarea");
@@ -40,14 +41,3 @@ buttonCrear.addEventListener("click", async (e) => {
   inputDescripcion.value = "";
 });
 
-
-async function deleteTask(id) {
-  const response = await fetch(`http://localhost:3000/api/tareas/${id}`, {
-    method: "DELETE",
-  }).then(getDatos);
-  if (response) {
-    console.log(`efectivo el delete de ${id}`);
-  } else {
-    console.log("error en el delete");
-  }
-}

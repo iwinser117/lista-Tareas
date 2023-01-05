@@ -56,7 +56,7 @@ const actualizarDatos = () => {
   inputName.value = null;
   inputDescripcion.value = null;
   idVariable = "";
-  actualizarBtn.style.display = "none";
+  actualizarBtn.style.display = "inline";
 };
 
 

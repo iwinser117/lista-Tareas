@@ -31,7 +31,7 @@ async function misDatos(data) {
 }
 
 function editar(id, n, d) {
-  actualizarBtn.style.display = 'inline'
+  actualizarBtn.style.display = 'flex'
   idVariable = id;
   inputName.value = n;
   inputDescripcion.value = d;
@@ -56,7 +56,6 @@ const actualizarDatos = () => {
   inputName.value = null;
   inputDescripcion.value = null;
   idVariable = "";
-  actualizarBtn.style.display = "none";
 };
 
 

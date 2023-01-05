@@ -30,13 +30,13 @@ async function misDatos(data) {
   });
 }
 
+
 function editar(id, n, d) {
-  actualizarBtn.style.display = 'inline'
   idVariable = id;
   inputName.value = n;
   inputDescripcion.value = d;
 }
-
+console.log(idVariable);
 const actualizarDatos = () => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
@@ -50,13 +50,23 @@ const actualizarDatos = () => {
       descripcion,
     }),
   })
-    .then(console.log("Editado..."))
+    .then(console.log("creado con exito"))
     .then(getDatos);
 
-  inputName.value = null;
-  inputDescripcion.value = null;
+  inputName.value = "";
+  inputDescripcion.value = "";
   idVariable = "";
-  actualizarBtn.style.display = "none";
 };
 
+//funciona hasta aqui el editar , ya que cambia el btn
 
+async function deleteTask(id) {
+  const response = await fetch(`http://localhost:3000/api/tareas/${id}`, {
+    method: "DELETE",
+  }).then(getDatos);
+  if (response) {
+    console.log(`efectivo el delete de ${id}`);
+  } else {
+    console.log("error en el delete");
+  }
+}

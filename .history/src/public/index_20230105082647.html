@@ -62,13 +62,13 @@
 
       <div class="container-md row  m-auto">
         <section class="col-sm-4 container w-30">
-        <div>
+        <div class="was-validated">
           <h3>Agregar Tareas</h3>
           <div class="mb-3">
             <label for="nameTarea" class="form-label">Nombre tarea</label>
             <input
               type="text"
-              id="nameTarea"
+              id="validationnameTarea"
               placeholder="como se llama tu nueva tarea"
               class="form-control"
               
@@ -90,8 +90,8 @@
           <button type="submit" id="button-form" class="btn btn-success">
             Crear
           </button>
-          <button style="display:none" id="button-actualizar" onclick="actualizarDatos()" class="btn btn-success">
-            Actualizar
+          <button id="button-actualizar" onclick="actualizarDatos()" class="btn btn-success">
+            Editar
           </button>
         </div>
       </section>
