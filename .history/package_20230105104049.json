@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node conexion.js",
     "build": "webpack --mode production conexion.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

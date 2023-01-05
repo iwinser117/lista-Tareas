@@ -35,4 +35,5 @@ app.listen(port, () => {
   console.log("escuchando efectivamente" + port);
 });
 
-module.exports = app;
+module.exports = router;
+export default app;
