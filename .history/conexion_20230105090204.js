@@ -1,6 +1,6 @@
 // const path = require("node:path");
 const mongoose = require("mongoose");
-const routes = require("./api/routes/routesTareas");
+const routes = require("./src/api/routes/routesTareas");
 const express = require("express");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
@@ -18,7 +18,7 @@ app.use("/api", routes);
 //  app.use(express.static(path.join(__dirname, "/src/public")))
 // app.use(express.static("public"));
 //mis rutas
-app.get("/", (req, res) => {
+app.get("/hola", (req, res) => {
   res.send("hola estamos conectados desde mongoose");
 });
 // app.get('*'),(req, res)=>{

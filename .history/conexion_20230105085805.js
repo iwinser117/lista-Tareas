@@ -1,6 +1,6 @@
 // const path = require("node:path");
 const mongoose = require("mongoose");
-const routes = require("./api/routes/routesTareas");
+const routes = require("./src/api/routes/routesTareas");
 const express = require("express");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
