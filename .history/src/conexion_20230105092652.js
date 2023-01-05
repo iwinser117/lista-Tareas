@@ -4,7 +4,7 @@ const routes = require("./api/routes/routesTareas");
 const express = require("express");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
-MONGODB_URI = `mongodb+srv://iwinser47:sierra117@mongo1.hudjvmm.mongodb.net/?retryWrites=true&w=majority`
+MONGODB_URI = mongodb+srv://iwinser47:sierra117@mongo1.hudjvmm.mongodb.net/?retryWrites=true&w=majority
 const bodyParser = require("body-parser");
 const app = express();
 
