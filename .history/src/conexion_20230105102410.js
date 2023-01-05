@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const mongoose = require("mongoose");
 const routes = require("./api/routes/routesTareas");
 const express = require("express");

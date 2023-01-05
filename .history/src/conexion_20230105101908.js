@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const mongoose = require("mongoose");
 const routes = require("./api/routes/routesTareas");
 const express = require("express");
@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 
 //definiendo rutas d ela a
 app.use("/api", routes);
-app.use(express.static(path.join(__dirname, "public")))
-// app.use(express.static("./public"));
+// app.use(express.static(path.join(__dirname, "./public")))
+app.use(express.static("./public"));
 //mis rutas
 app.get("/", (req, res) => {
   res.send("hola estamos conectados desde mongoose");
