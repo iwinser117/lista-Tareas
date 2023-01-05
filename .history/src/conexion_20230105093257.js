@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 // verifico conexion
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("conectado a mongodb"))
   .catch((e) => console.log("error de conexión", e));
 app.listen(port, () => {
