@@ -38,7 +38,6 @@ buttonCrear.addEventListener("click", async (e) => {
   enviarDatos();
   inputName.value = "";
   inputDescripcion.value = "";
-  actualizarBtn.style.display = "none";
 });
 
 
