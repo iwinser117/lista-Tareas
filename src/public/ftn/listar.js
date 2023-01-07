@@ -40,7 +40,7 @@ function editar(id, n, d) {
 const actualizarDatos = () => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
-  fetch(`http://localhost:3000/api/tareas/${idVariable}`, {
+  fetch(`https://app117.azurewebsites.net/api/tareas/${idVariable}`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",

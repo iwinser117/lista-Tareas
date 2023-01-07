@@ -7,7 +7,7 @@ const inputName = document.getElementById("nameTarea");
 const inputDescripcion = document.getElementById("descripcionTarea");
 
 const getDatos = async () => {
-  const response = await fetch("http://localhost:3000/api/tareas");
+  const response = await fetch("https://app117.azurewebsites.net/api/tareas");
   const data = await response.json();
   misDatos(data);
   return data;
@@ -22,7 +22,7 @@ buttonCrear.addEventListener("click", async (e) => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   const enviarDatos = () => {
-    fetch("http://localhost:3000/api/tareas", {
+    fetch("https://app117.azurewebsites.net/api/tareas", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -43,9 +43,12 @@ buttonCrear.addEventListener("click", async (e) => {
 
 
 async function deleteTask(id) {
-  const response = await fetch(`http://localhost:3000/api/tareas/${id}`, {
-    method: "DELETE",
-  }).then(getDatos);
+  const response = await fetch(
+    `https://app117.azurewebsites.net/api/tareas/${id}`,
+    {
+      method: "DELETE",
+    }
+  ).then(getDatos);
   if (response) {
     console.log(`efectivo el delete de ${id}`);
   } else {
