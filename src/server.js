@@ -1,6 +1,6 @@
 // const path = require("node:path");
 const mongoose = require("mongoose");
-const routes = require("./src/api/routes/routesTareas");
+const routes = require("./api/routes/routesTareas");
 const express = require("express");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use("/api", routes);
 // app.use(express.static(path.join(__dirname, "./src/public")))
  app.use(express.static("assets"));
-app.use(express.static(__dirname + "/src/public"));
+app.use(express.static(__dirname + '/public'));
 // app.use(express.static(__dirname + "/assets"));
 //mis rutas
 // app.get("/", (req, res) => {
