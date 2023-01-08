@@ -19,6 +19,7 @@ const getDatos = async () => {
 getDatos();
 
 buttonCrear.addEventListener("click", async (e) => {
+  validateInput(inputName, inputDescripcion);
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   const enviarDatos = () => {
@@ -41,14 +42,15 @@ buttonCrear.addEventListener("click", async (e) => {
   actualizarBtn.style.display = "none";
 });
 
-
-async function deleteTask(id) {
+async function deleteTask(id, tarea) {
   const response = await fetch(
     `https://app117.azurewebsites.net/api/tareas/${id}`,
     {
       method: "DELETE",
     }
-  ).then(getDatos);
+  )
+    .then(getDatos)
+    .then(alertDelete(tarea));
   if (response) {
     console.log(`efectivo el delete de ${id}`);
   } else {

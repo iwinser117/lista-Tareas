@@ -39,7 +39,7 @@ async function misDatos(data) {
                   </button>
               </td>`
               }
-              <td onclick ="deleteTask('${item._id}')">
+              <td onclick ="deleteTask('${item._id}', '${item.name}')">
                 <button  id="eliminarBtn" class="btn btn-danger">
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
