@@ -44,7 +44,18 @@ router.put("/tareas/:id", (req, res) => {
   const { name, descripcion } = req.body;
   tareaSchema
     //muy importante colocar el guion al piso ya que este es el de la base de datos
-    .updateOne({ _id: id }, { $set: { name, descripcion } })
+    .updateOne({ _id: id }, { $set: { name, descripcion} })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+  console.log({ id });
+});
+//actualizar estado
+router.patch("/tareas/:id", (req, res) => {
+  const { id } = req.params;
+  const { statusTarea } = req.body;
+  tareaSchema
+    //muy importante colocar el guion al piso ya que este es el de la base de datos
+    .updateOne({ _id: id }, { $set: { statusTarea } })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
   console.log({ id });
