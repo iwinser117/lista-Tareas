@@ -4,7 +4,8 @@
   Cuenta con conexion a Base de Datos Mongodb.
   Cumple con todos los metodos de peticiones http (GET- POST - PUT - PATCH - DELETE)
   
-  Y esta desplegada en Azure [https://app117.azurewebsites.net/](https://www.google.com)
+  Front desplegado en netlify [https://crudlistatareas.netlify.app](https://www.google.com)
+  Y esta desplegado el servidor en azure [https://app117.azurewebsites.net](https://www.google.com)
   
 ![Screenshot from 2023-01-07 20-48-08](https://user-images.githubusercontent.com/77251836/211177105-b5a2e2fe-576a-4934-9438-c543a930f152.png)
 
