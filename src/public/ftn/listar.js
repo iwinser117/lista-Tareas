@@ -1,10 +1,14 @@
 const contenido = document.getElementById("contenido");
+// let contImagen = document.getElementById('miImagenEspera')
+// contImagen.innerHTML = '><img src="../assets/esperandoDatos.gif" '
 let idVariable = "";
 let stado;
 async function misDatos(data) {
   contenido.innerHTML = "";
   await data.map((item, index) => {
-    contenido.innerHTML += `
+    contenido.innerHTML += `${
+      item
+        ? `
     
             <tr ${
               item.statusTarea ? null : `class="text-decoration-line-through"`
@@ -43,7 +47,9 @@ async function misDatos(data) {
                 <button  id="eliminarBtn" class="btn btn-danger">
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
-              </td>`;
+              </td>`
+        : "<div><img src='../assets/esperandoDatos.gif'></div>"
+    }`;
   });
 }
 
