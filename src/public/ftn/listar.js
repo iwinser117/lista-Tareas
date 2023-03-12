@@ -63,18 +63,22 @@ function editar(id, n, d) {
 const actualizarDatos = () => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
-  fetch(`https://app117.azurewebsites.net/api/tareas/${idVariable}`, {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      descripcion,
-    }),
-  })
+  
+  fetch(
+    `https://lista-tareas-production.up.railway.app/api/tareas/${idVariable}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        descripcion,
+      }),
+    }
+  )
     .then(console.log("Editado..."))
-    .then(getDatos);
+    .then(getDatos)
 
   inputName.value = null;
   inputDescripcion.value = null;
@@ -86,15 +90,18 @@ function actualizarStatus(id, b) {
   idVariable = id;
   stado = b;
   let statusTarea = !stado;
-  fetch(`https://app117.azurewebsites.net/api/tareas/${idVariable}`, {
-    method: "PATCH",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      statusTarea,
-    }),
-  })
+  fetch(
+    `https://lista-tareas-production.up.railway.app/api/tareas/${idVariable}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        statusTarea,
+      }),
+    }
+  )
     .then(console.log(`estado actualizado a ${statusTarea}`))
-    .then(getDatos);
+    .then(getDatos)
 }

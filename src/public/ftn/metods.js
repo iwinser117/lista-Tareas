@@ -44,13 +44,13 @@ buttonCrear.addEventListener("click", async (e) => {
 
 async function deleteTask(id, tarea) {
   const response = await fetch(
-    `https://app117.azurewebsites.net/api/tareas/${id}`,
+    `https://lista-tareas-production.up.railway.app/api/tareas/${id}`,
     {
       method: "DELETE",
     }
   )
     .then(getDatos)
-    .then(alertDelete(tarea));
+    .then(alertDelete(tarea))
   if (response) {
     console.log(`efectivo el delete de ${id}`);
   } else {
