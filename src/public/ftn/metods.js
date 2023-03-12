@@ -25,7 +25,7 @@ buttonCrear.addEventListener("click", async (e) => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   const enviarDatos = () => {
-    fetch("https://app117.azurewebsites.net/api/tareas", {
+    fetch("https://lista-tareas-production.up.railway.app/api/tareas", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -36,7 +36,7 @@ buttonCrear.addEventListener("click", async (e) => {
       }),
     })
       .then(console.log("creado con exito"))
-      .then(getDatos);
+      .then(getDatos)
   };
   enviarDatos();
   inputName.value = "";
