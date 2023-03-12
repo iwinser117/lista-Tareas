@@ -7,7 +7,9 @@ const inputName = document.getElementById("nameTarea");
 const inputDescripcion = document.getElementById("descripcionTarea");
 
 const getDatos = async () => {
-  const response = await fetch("https://app117.azurewebsites.net/api/tareas");
+  const response = await fetch(
+    "https://lista-tareas-production.up.railway.app/api/tareas"
+  )
   const data = await response.json();
   misDatos(data);
   return data;
