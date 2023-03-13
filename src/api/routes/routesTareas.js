@@ -19,14 +19,17 @@ router.get("/tareas/:id", (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
-//eliminar tareas , se usa el id.
-router.delete("/tareas/:id", (req, res) => {
-  const { id } = req.params;
-  tareaSchema
-    .remove({ _id: id })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
+// eliminar tareas , se usa el id.
+router.delete("/tareas/:id", async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const deletedTarea = await tareaSchema.deleteOne({ _id: id })
+    res.json(deletedTarea)
+  } catch (error) {
+    res.json({ message: error })
+  }
+})
 
 //creando una nueva
 router.post("/tareas", (req, res) => {

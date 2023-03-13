@@ -67,7 +67,7 @@ const actualizarDatos = () => {
   fetch(
     `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}`,
     {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-type": "application/json",
       },
