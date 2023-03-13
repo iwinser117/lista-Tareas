@@ -65,7 +65,7 @@ const actualizarDatos = () => {
   const descripcion = inputDescripcion.value;
   
   fetch(
-    `https://lista-tareas-production.up.railway.app/api/tareas/${idVariable}`,
+    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}`,
     {
       method: "PUT",
       headers: {
@@ -91,7 +91,7 @@ function actualizarStatus(id, b) {
   stado = b;
   let statusTarea = !stado;
   fetch(
-    `https://lista-tareas-production.up.railway.app/api/tareas/${idVariable}`,
+    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}`,
     {
       method: "PATCH",
       headers: {

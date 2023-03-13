@@ -8,7 +8,7 @@ const inputDescripcion = document.getElementById("descripcionTarea");
 
 const getDatos = async () => {
   const response = await fetch(
-    "https://lista-tareas-production.up.railway.app/api/tareas"
+    "https://express-raily-demo-production.up.railway.app/api/tareas"
   )
   const data = await response.json();
   misDatos(data);
@@ -25,7 +25,7 @@ buttonCrear.addEventListener("click", async (e) => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   const enviarDatos = () => {
-    fetch("https://lista-tareas-production.up.railway.app/api/tareas", {
+    fetch("https://express-raily-demo-production.up.railway.app/api/tareas", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -46,7 +46,7 @@ buttonCrear.addEventListener("click", async (e) => {
 
 async function deleteTask(id, tarea) {
   const response = await fetch(
-    `https://lista-tareas-production.up.railway.app/api/tareas/${id}`,
+    `https://express-raily-demo-production.up.railway.app/api/tareas/${id}`,
     {
       method: "DELETE",
     }
