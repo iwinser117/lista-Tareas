@@ -76,7 +76,7 @@ const actualizarDatos = () => {
         descripcion,
       }),
     }
-  )
+  )           
     .then(console.log("Editado..."))
     .then(getDatos)
 
@@ -91,9 +91,9 @@ function actualizarStatus(id, b) {
   stado = b;
   let statusTarea = !stado;
   fetch(
-    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}`,
+    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}/estado`,
     {
-      method: "PATCH",
+      method: "PATCH",  
       headers: {
         "Content-type": "application/json",
       },
