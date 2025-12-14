@@ -1,6 +1,6 @@
 const contenido = document.getElementById("contenido");
-// let contImagen = document.getElementById('miImagenEspera')
-// contImagen.innerHTML = '><img src="../assets/esperandoDatos.gif" '
+import { updateTarea, updateTareaStatus } from './api.js';
+
 let idVariable = "";
 let stado;
 async function misDatos(data) {
@@ -60,48 +60,49 @@ function editar(id, n, d) {
   inputDescripcion.value = d;
 }
 
-const actualizarDatos = () => {
+const actualizarDatos = async () => {
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   
-  fetch(
-    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        descripcion,
-      }),
-    }
-  )           
-    .then(console.log("Editado..."))
-    .then(getDatos)
+  const result = await updateTarea(idVariable, name, descripcion);
+  
+  if (!result.ok) {
+    Swal.fire({
+      title: 'Error',
+      text: `No se pudo actualizar la tarea: ${result.error}`,
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
+    return;
+  }
 
+  console.log("Tarea actualizada con éxito");
+  await getDatos();
+  
   inputName.value = null;
   inputDescripcion.value = null;
   idVariable = "";
-  actualizarBtn.style.display = "none";
+  const actualizarBtn = document.getElementById("button-actualizar");
+  if (actualizarBtn) actualizarBtn.style.display = "none";
 };
 
 function actualizarStatus(id, b) {
   idVariable = id;
   stado = b;
   let statusTarea = !stado;
-  fetch(
-    `https://express-raily-demo-production.up.railway.app/api/tareas/${idVariable}/estado`,
-    {
-      method: "PATCH",  
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        statusTarea,
-      }),
-    }
-  )
-    .then(console.log(`estado actualizado a ${statusTarea}`))
-    .then(getDatos)
+  
+  updateTareaStatus(idVariable, statusTarea)
+    .then(async (result) => {
+      if (!result.ok) {
+        Swal.fire({
+          title: 'Error',
+          text: `No se pudo actualizar el estado: ${result.error}`,
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+        return;
+      }
+      console.log(`Estado actualizado a ${statusTarea}`);
+      await getDatos();
+    });
 }

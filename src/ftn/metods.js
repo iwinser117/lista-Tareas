@@ -1,3 +1,9 @@
+import { getTareas, createTarea } from './api.js';
+import { logEnv } from './env.js';
+
+// Log environment on load
+logEnv();
+
 document.addEventListener("DOMContentLoaded", () => {
   getDatos();
 });
@@ -7,10 +13,20 @@ const inputName = document.getElementById("nameTarea");
 const inputDescripcion = document.getElementById("descripcionTarea");
 
 const getDatos = async () => {
-  const response = await fetch(
-    "https://express-raily-demo-production.up.railway.app/api/tareas"
-  )
-  const data = await response.json();
+  const result = await getTareas();
+  
+  if (!result.ok) {
+    console.error('Error al cargar tareas:', result.error);
+    Swal.fire({
+      title: 'Error',
+      text: `No se pudieron cargar las tareas: ${result.error}`,
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
+    return [];
+  }
+
+  const data = result.data;
   misDatos(data);
   return data;
   /* .then((response) => response.json())
@@ -24,20 +40,23 @@ buttonCrear.addEventListener("click", async (e) => {
   validateInput(inputName, inputDescripcion);
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
-  const enviarDatos = () => {
-    fetch("https://express-raily-demo-production.up.railway.app/api/tareas", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        descripcion,
-      }),
-    })
-      .then(console.log("creado con exito"))
-      .then(getDatos)
+  
+  const enviarDatos = async () => {
+    const result = await createTarea(name, descripcion);
+    
+    if (!result.ok) {
+      Swal.fire({
+        title: 'Error',
+        text: `No se pudo crear la tarea: ${result.error}`,
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+      return;
+    }
+
+    await getDatos();
   };
+  
   enviarDatos();
   inputName.value = "";
   inputDescripcion.value = "";
@@ -45,17 +64,19 @@ buttonCrear.addEventListener("click", async (e) => {
 });
 
 async function deleteTask(id, tarea) {
-  const response = await fetch(
-    `https://express-raily-demo-production.up.railway.app/api/tareas/${id}`,
-    {
-      method: "DELETE",
-    }
-  )
-    .then(getDatos)
-    .then(alertDelete(tarea))
-  if (response) {
-    console.log(`efectivo el delete de ${id}`);
-  } else {
-    console.log("error en el delete");
+  const { deleteTarea } = await import('./api.js');
+  const result = await deleteTarea(id);
+  
+  if (!result.ok) {
+    Swal.fire({
+      title: 'Error',
+      text: `No se pudo eliminar la tarea: ${result.error}`,
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
+    return;
   }
+  
+  await getDatos();
+  alertDelete(tarea);
 }
