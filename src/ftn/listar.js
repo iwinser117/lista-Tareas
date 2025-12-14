@@ -1,5 +1,6 @@
-const contenido = document.getElementById("contenido");
 import { updateTarea, updateTareaStatus } from './api.js';
+
+const contenido = document.getElementById("contenido");
 
 let idVariable = "";
 let stado;
@@ -106,3 +107,5 @@ function actualizarStatus(id, b) {
       await getDatos();
     });
 }
+
+export { misDatos };

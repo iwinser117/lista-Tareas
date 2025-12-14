@@ -1,5 +1,6 @@
 import { getTareas, createTarea } from './api.js';
 import { logEnv } from './env.js';
+import { misDatos } from './listar.js';
 
 // Log environment on load
 logEnv();
