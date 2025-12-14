@@ -1,9 +1,9 @@
 {
   "name": "lista-tareas",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
-    "start": "node ./src/server.js"
+    "start": "echo 'Abra index.html o use Live Server'"
   },
   "keywords": [],
   "author": "",
@@ -13,13 +13,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "axios": "^1.2.2",
-    "body-parser": "^1.20.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mongoose": "^6.8.2",
-    "webpack": "^5.75.0"
+    "axios": "^1.2.2"
   },
   "description": "applicacion de lista de tareas, nodeJs.",
   "repository": {
