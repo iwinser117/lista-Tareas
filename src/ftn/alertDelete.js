@@ -1,8 +1,9 @@
-function alertDelete (a){
-    Swal.fire({
-      title: "Eliminado",
-      text: `Se ha eliminado la tarea ${a}`,
-      icon: "warning",
-      confirmButtonText: "Aceptar",
-    });
+
+export function alertDelete(taskName) {
+  Swal.fire({
+    title: "Eliminado",
+    text: `Se ha eliminado la tarea ${taskName}`,
+    icon: "warning",
+    confirmButtonText: "Aceptar",
+  });
 }

@@ -1,18 +1,21 @@
-import { getTareas, createTarea } from './api.js';
+import { getTareas, createTarea, deleteTarea } from './api.js';
 import { logEnv } from './env.js';
-import { misDatos } from './listar.js';
+import { misDatos, editar, actualizarDatos, actualizarStatus } from './listar.js';
+import { validateInput } from './validate.js';
+import { alertDelete } from './alertDelete.js';
+import { initListar } from './listar.js';
 
 // Log environment on load
 logEnv();
 
-document.addEventListener("DOMContentLoaded", () => {
-  getDatos();
-});
+// Elementos del DOM
 const actualizarBtn = document.getElementById("button-actualizar");
 const buttonCrear = document.getElementById("button-form");
 const inputName = document.getElementById("nameTarea");
 const inputDescripcion = document.getElementById("descripcionTarea");
+const contenido = document.getElementById("contenido");
 
+// Definir getDatos PRIMERO (antes de usarlo)
 const getDatos = async () => {
   const result = await getTareas();
   
@@ -30,15 +33,36 @@ const getDatos = async () => {
   const data = result.data;
   misDatos(data);
   return data;
+};
+
+// AHORA inyectar dependencias en listar.js
+initListar({
+  contenido,
+  actualizarBtn,
+  inputName,
+  inputDescripcion,
+  getDatos,
+});
+
+// Exponer funciones globales para onclick en HTML
+window.editar = editar;
+window.actualizarStatus = actualizarStatus;
+window.deleteTask = deleteTask;
+window.actualizarDatos = actualizarDatos;
+
+document.addEventListener("DOMContentLoaded", () => {
+  getDatos();
+});
   /* .then((response) => response.json())
     .then((data) => {
        misDatos(data);
     }); */
-};
 getDatos();
 
 buttonCrear.addEventListener("click", async (e) => {
-  validateInput(inputName, inputDescripcion);
+  const isValid = validateInput(inputName, inputDescripcion);
+  if (!isValid) return;
+  
   const name = inputName.value;
   const descripcion = inputDescripcion.value;
   
@@ -65,7 +89,6 @@ buttonCrear.addEventListener("click", async (e) => {
 });
 
 async function deleteTask(id, tarea) {
-  const { deleteTarea } = await import('./api.js');
   const result = await deleteTarea(id);
   
   if (!result.ok) {

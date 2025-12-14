@@ -1,9 +1,18 @@
 import { updateTarea, updateTareaStatus } from './api.js';
 
-const contenido = document.getElementById("contenido");
-
 let idVariable = "";
 let stado;
+let contenido, actualizarBtn, inputName, inputDescripcion, getDatos;
+
+// Setter para inyectar dependencias de metods.js
+export function initListar(deps) {
+  contenido = deps.contenido;
+  actualizarBtn = deps.actualizarBtn;
+  inputName = deps.inputName;
+  inputDescripcion = deps.inputDescripcion;
+  getDatos = deps.getDatos;
+}
+
 async function misDatos(data) {
   contenido.innerHTML = "";
   await data.map((item, index) => {
@@ -19,12 +28,12 @@ async function misDatos(data) {
               <td > ${item.descripcion}</td>
               <td>${
                 item.statusTarea
-                  ? `<button class="btn btn-info" onclick="actualizarStatus('${item._id}',${item.statusTarea})">
+                  ? `<button class="btn btn-info" onclick="window.actualizarStatus('${item._id}',${item.statusTarea})">
                   <i class="fa-regular fa-circle-check"></i> Pendiente
                 </button>`
                   : `<button
                     class="btn btn-success"
-                    onclick="actualizarStatus('${item._id}',${item.statusTarea})"
+                    onclick="window.actualizarStatus('${item._id}',${item.statusTarea})"
                   >
                     <i class="fa-regular fa-circle-check"></i> Hecho
                   </button>`
@@ -33,18 +42,18 @@ async function misDatos(data) {
               </td>
               ${
                 item.statusTarea
-                  ? `<td onclick ="editar('${item._id}', '${item.name}','${item.descripcion}')">
+                  ? `<td onclick ="window.editar('${item._id}', '${item.name}','${item.descripcion}')">
                   <button   class="btn btn-warning">
                     <i class="fa-regular fa-pen-to-square"></i>
                   </button>
               </td>`
-                  : `<td onclick ="editar('${item._id}', '${item.name}','${item.descripcion}')">
+                  : `<td onclick ="window.editar('${item._id}', '${item.name}','${item.descripcion}')">
                   <button   class="btn btn-warning">
                     <i class="fa-regular fa-pen-to-square"></i>
                   </button>
               </td>`
               }
-              <td onclick ="deleteTask('${item._id}', '${item.name}')">
+              <td onclick ="window.deleteTask('${item._id}', '${item.name}')">
                 <button  id="eliminarBtn" class="btn btn-danger">
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
@@ -108,4 +117,4 @@ function actualizarStatus(id, b) {
     });
 }
 
-export { misDatos };
+export { misDatos, editar, actualizarDatos, actualizarStatus };
