@@ -132,6 +132,11 @@ body {
 .input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+  transform: translateY(-1px);
+}
+.input.editing {
+  background: linear-gradient(180deg, rgba(34,211,238,0.15), rgba(34,211,238,0.08));
+  border-color: var(--primary);
 }
 
 .btn {
@@ -157,9 +162,44 @@ body {
 .btn-danger {
   background: linear-gradient(180deg, rgba(244,63,94,0.18), rgba(244,63,94,0.08));
   border-color: rgba(244,63,94,0.35);
+  color: var(--danger);
 }
-.btn-ghost {
-  background: transparent;
+.btn-danger:hover {
+  background: linear-gradient(180deg, rgba(244,63,94,0.3), rgba(244,63,94,0.15));
+  border-color: var(--danger);
+  box-shadow: 0 0 8px rgba(244,63,94,0.3);
+}
+
+.btn-warning {
+  background: linear-gradient(180deg, rgba(245,158,11,0.18), rgba(245,158,11,0.08));
+  border-color: rgba(245,158,11,0.35);
+  color: var(--warning);
+}
+.btn-warning:hover {
+  background: linear-gradient(180deg, rgba(245,158,11,0.3), rgba(245,158,11,0.15));
+  border-color: var(--warning);
+  box-shadow: 0 0 8px rgba(245,158,11,0.3);
+}
+
+.btn-info {
+  background: linear-gradient(180deg, rgba(34,211,238,0.18), rgba(34,211,238,0.08));
+  border-color: rgba(34,211,238,0.35);
+  color: var(--primary);
+}
+.btn-info:hover {
+  background: linear-gradient(180deg, rgba(34,211,238,0.3), rgba(34,211,238,0.15));
+  border-color: var(--primary);
+}
+
+.btn-success {
+  background: linear-gradient(180deg, rgba(34,197,94,0.18), rgba(34,197,94,0.08));
+  border-color: rgba(34,197,94,0.35);
+  color: var(--success);
+}
+.btn-success:hover {
+  background: linear-gradient(180deg, rgba(34,197,94,0.3), rgba(34,197,94,0.15));
+  border-color: var(--success);
+  box-shadow: 0 0 8px rgba(34,197,94,0.3);
 }
 
 /* Task List */
@@ -176,6 +216,11 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface);
+  transition: all .2s ease;
+}
+.item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.15);
 }
 .checkbox {
   width: 18px; height: 18px;
@@ -189,6 +234,41 @@ body {
   font-size: 0.85rem;
 }
 .item-actions { display: flex; gap: 8px; }
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead th {
+  background: linear-gradient(180deg, rgba(34,211,238,0.1), transparent);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+  color: var(--primary);
+}
+table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: all .15s ease;
+}
+table tbody tr:hover {
+  background: rgba(34,211,238,0.05);
+}
+table td, table th {
+  padding: 12px;
+}
+table .text-decoration-line-through {
+  opacity: 0.6;
+  background: rgba(34,211,238,0.08);
+}
+table .text-decoration-line-through td {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+table .text-decoration-line-through .btn {
+  opacity: 0.7;
+}
 
 /* Footer */
 .footer {

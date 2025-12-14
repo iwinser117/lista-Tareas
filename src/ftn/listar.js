@@ -54,8 +54,8 @@ async function misDatos(data) {
               </td>`
               }
               <td onclick ="window.deleteTask('${item._id}', '${item.name}')">
-                <button  id="eliminarBtn" class="btn btn-danger">
-                  <i class="fa-solid fa-trash-can"></i>
+                <button id="eliminarBtn" class="btn btn-danger" title="Eliminar tarea">
+                  <span style="font-size: 18px; line-height: 1;">×</span>
                 </button>
               </td>`
         : "<div><img src='../assets/esperandoDatos.gif'></div>"
@@ -68,6 +68,11 @@ function editar(id, n, d) {
   idVariable = id;
   inputName.value = n;
   inputDescripcion.value = d;
+  
+  // Scroll a los inputs y hacer focus
+  inputName.focus();
+  inputName.select();
+  inputName.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 const actualizarDatos = async () => {
