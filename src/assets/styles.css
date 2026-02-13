@@ -239,6 +239,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 table thead th {
   background: linear-gradient(180deg, rgba(34,211,238,0.1), transparent);
@@ -257,6 +258,30 @@ table tbody tr:hover {
 }
 table td, table th {
   padding: 12px;
+}
+table th:nth-child(1),
+table td:nth-child(1) {
+  width: 48px;
+}
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 180px;
+}
+table th:nth-child(4),
+table td:nth-child(4) {
+  width: 140px;
+}
+table th:nth-child(5),
+table td:nth-child(5),
+table th:nth-child(6),
+table td:nth-child(6) {
+  width: 80px;
+}
+.truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 table .text-decoration-line-through {
   opacity: 0.6;

@@ -25,7 +25,7 @@ async function misDatos(data) {
             }>
               <th class="index">${index + 1}</th>
               <td >${item.name}</td>
-              <td > ${item.descripcion}</td>
+              <td><span class="truncate">${item.descripcion}</span></td>
               <td>${
                 item.statusTarea
                   ? `<button class="btn btn-info" onclick="window.actualizarStatus('${item._id}',${item.statusTarea})">
